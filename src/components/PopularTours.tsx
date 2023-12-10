@@ -1,6 +1,23 @@
+"use client"
 import Image from 'next/image'
 import TourCard from "@/components/TourCard";
+import {useQuery, gql, ApolloProvider} from '@apollo/client';
+
+import client from '../apollo/client'
+import {GET_ROCKETS} from "@/apollo/fetchData";
+
 const PopularTours = () => {
+
+    const { loading, error, data } = useQuery(GET_ROCKETS);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if(error) {
+        return <p>Error...</p>
+    }
+
     return (
         <section className="mx-auto max-w-[1280px] px-20 mt-24">
             <div className="flex justify-between items-center">
@@ -16,7 +33,9 @@ const PopularTours = () => {
             </div>
 
             <div className="mt-[42px]">
-                <TourCard/>
+                {data.rockets.map((rocket: { id: string; name: string; description: string }) => (
+                    <TourCard key={rocket.id} name={rocket.name} description={rocket.description} />
+                ))}
             </div>
         </section>
     )

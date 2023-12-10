@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from "@/components/Main/Header";
 import {Syne, Lato} from 'next/font/google'
+import {ApolloWrapper} from "@/apollo/ApolloWraper";
+
 
 const syne = Syne({
     subsets: ['latin'],
@@ -21,6 +23,8 @@ export const metadata: Metadata = {
   description: 'SpaceX',
 }
 
+
+
 export default function RootLayout({
   children,
 }: {
@@ -29,8 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={syne.className}>
+      <ApolloWrapper>
       <Header/>
       {children}
+      </ApolloWrapper>
       </body>
     </html>
   )
