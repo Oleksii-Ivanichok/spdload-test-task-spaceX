@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.centred{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.text-shadow-md{
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}

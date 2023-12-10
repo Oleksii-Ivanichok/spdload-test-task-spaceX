@@ -8,10 +8,16 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-syne)'],
+        mono: ['var(--font-lato)'],
+      },
       colors: {
         secondary: '#D3EAFF',
         'header-bg': 'rgba(30, 30, 30, 0.48)',
         'white-secondary': '#ECECEC',
+        'dark-secondary': '#1E1E1E',
+        'blue-secondary' : '#556B84'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

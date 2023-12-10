@@ -15,3 +15,8 @@ interface iconProperties {
     height: number;
     alt: string;
 }
+
+export interface TourCardProps {
+    name: string;
+    description: string;
+}
