@@ -9,14 +9,16 @@ import Slider from 'react-slick'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CustomButton from "@/components/UI/CustomButton";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import settings from "@/settings/slider";
 const PopularTours = () => {
     const [sliderRef, setSliderRef] = useState<Slider | null>(null);
 
     const {loading, error, data} = useQuery(GET_ROCKETS);
 
+    useEffect(() => {
 
+    }, [data])
 
     if (loading) {
         return <p>Loading...</p>;

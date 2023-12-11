@@ -11,3 +11,14 @@
 .text-shadow-md{
     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+.hover-link::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: width .3s;
+}
+.hover-link:hover::after{
+    width: 100%;
+}

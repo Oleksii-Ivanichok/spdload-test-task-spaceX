@@ -8,7 +8,7 @@ const Header = () => {
     const isFavoritesPage = usePathname() === '/favorites';
 
     return (
-        <header className="w-full absolute z-10 bg-header-bg hover:bg-black transition duration-300">
+        <header className="w-full fixed z-40 bg-header-bg hover:bg-black transition duration-300">
             <div className="flex mx-auto max-w-[1280px] justify-between items-center px-20 py-4 hover:ease-linear">
                 <Link href="/">
                     <div className="w-[229px] h-[42px] bg-red-800 relative mix-blend-difference">
@@ -19,18 +19,18 @@ const Header = () => {
                 <nav>
                     <ul className="flex text-white gap-8 font-medium">
                         <Link href="/">
-                            <li className={isFavoritesPage ? '' : 'border-b-[1px]'}>
+                            <li className={isFavoritesPage ? 'hover-link' : 'border-b-[1px]' }>
                                 HOME
                             </li>
                         </Link>
                         <Link href="/#">
-                            <li>TOURS</li>
+                            <li className="hover-link">TOURS</li>
                         </Link>
                         <Link href="/#">
-                            <li>ABOUT</li>
+                            <li className="hover-link">ABOUT</li>
                         </Link>
                         <Link href="/#">
-                            <li>HELP</li>
+                            <li className="hover-link">HELP</li>
                         </Link>
                     </ul>
                 </nav>
