@@ -17,6 +17,14 @@ interface iconProperties {
 }
 
 export interface TourCardProps {
+    id: string;
+    name: string;
+    description: string;
+    type: string;
+}
+
+export interface Tours {
+    id: string;
     name: string;
     description: string;
 }
