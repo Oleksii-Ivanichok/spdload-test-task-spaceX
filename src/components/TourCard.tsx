@@ -16,26 +16,28 @@ const TourCard = ({id, name, description, type}: TourCardProps) => {
         console.log(tours);
     }
 
-    const deleteTour = () =>{
+    const deleteTour = () => {
         setTours((prevTour) => {
             return prevTour.filter((tour) => tour.id !== id)
         })
     }
 
     return (
-        <div className="w-[411px] text-center border border-secondary">
+        <div className="xl:w-full xl:max-w-[340px] 2xl:max-w-[411px] h-[832px] text-center border border-secondary">
             <Image src="/card1.jpg" alt="card1" width={411} height={296}/>
-            <div className="mx-auto max-w-[347px]">
-                <h3 className="text-dark-secondary text-2xl font-bold mt-8">{name}</h3>
-                <p className="text-blue-secondary text-2xl font-light mt-4">{description}</p>
-                <div className="flex justify-between mt-16 mb-6 flex-wrap">
+            <div className="mx-auto max-w-[347px] px-8">
+                <div className="h-[440px]">
+                    <h3 className="text-dark-secondary text-2xl font-bold mt-8">{name}</h3>
+                    <p className="text-blue-secondary text-2xl font-light mt-4">{description}</p>
+                </div>
+                <div className="mt-16 mb-6 flex gap-4">
                     <CustomButton
                         title="BUY"
-                        containerStyles="w-[278px] h-[52px] bg-secondary text-2xl font-semibold
+                        containerStyles="w-full max-w-[278px] h-[52px] bg-secondary text-2xl font-semibold
                      transform active:scale-75 transition-transform"
                     />
                     <CustomButton
-                        containerStyles="w-[52px] h-[52px] bg-white-secondary flex items-center justify-center"
+                        containerStyles="w-full max-w-[52px] h-[52px] bg-white-secondary flex items-center justify-center"
                         handleClick={type === 'like' ? addTour : deleteTour}
                         iconProperties={{
                             src: type === 'like' ? '/heart.svg' : '/delete.svg',
