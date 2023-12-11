@@ -6,15 +6,16 @@ const CustomButton = ({title, iconProperties, containerStyles, textStyles, isDis
             disabled={isDisabled}
             className={`${containerStyles}`}
             onClick={handleClick}
-        >
+        > {title}
             {
-                iconProperties ?
+                iconProperties &&
                     <Image
                     src={iconProperties.src}
                     width={iconProperties.width}
                     height={iconProperties.height}
                     alt={iconProperties.alt}
-                /> : title
+                    className={`${iconProperties.styles}`}
+                />
             }
 
         </button>

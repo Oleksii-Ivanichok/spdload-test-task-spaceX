@@ -13,7 +13,6 @@ const TourCard = ({id, name, description, type}: TourCardProps) => {
         if (!tourExists) {
             setTours((prevTours) => [...prevTours, {id, name, description}]);
         }
-        console.log(tours);
     }
 
     const deleteTour = () => {
@@ -23,14 +22,14 @@ const TourCard = ({id, name, description, type}: TourCardProps) => {
     }
 
     return (
-        <div className="xl:w-full xl:max-w-[340px] 2xl:max-w-[411px] h-[832px] text-center border border-secondary">
+        <div className="w-full xl:max-w-[340px] xl:mx-6 2xl:mx-6 2xl:max-w-[411px] max-h-[2000px] text-center border border-secondary">
             <Image src="/card1.jpg" alt="card1" width={411} height={296}/>
             <div className="mx-auto max-w-[347px] px-8">
                 <div className="h-[440px]">
                     <h3 className="text-dark-secondary text-2xl font-bold mt-8">{name}</h3>
                     <p className="text-blue-secondary text-2xl font-light mt-4">{description}</p>
                 </div>
-                <div className="mt-16 mb-6 flex gap-4">
+                <div className="mt-16 2xl:mt-6 mb-6 flex gap-4">
                     <CustomButton
                         title="BUY"
                         containerStyles="w-full max-w-[278px] h-[52px] bg-secondary text-2xl font-semibold
@@ -40,7 +39,7 @@ const TourCard = ({id, name, description, type}: TourCardProps) => {
                         containerStyles="w-full max-w-[52px] h-[52px] bg-white-secondary flex items-center justify-center"
                         handleClick={type === 'like' ? addTour : deleteTour}
                         iconProperties={{
-                            src: type === 'like' ? '/heart.svg' : '/delete.svg',
+                            src: type === 'like' ? '/heart-dark.svg' : '/delete.svg',
                             width: 24,
                             height: 24,
                             alt: type === 'like' ? 'like' : 'delete',

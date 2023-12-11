@@ -14,6 +14,7 @@ interface iconProperties {
     width: number;
     height: number;
     alt: string;
+    styles?: string;
 }
 
 export interface TourCardProps {
