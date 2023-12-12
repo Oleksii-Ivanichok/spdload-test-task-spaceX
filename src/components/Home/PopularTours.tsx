@@ -11,13 +11,18 @@ import "slick-carousel/slick/slick-theme.css";
 import CustomButton from "@/components/UI/CustomButton";
 import {useEffect, useState} from "react";
 import settings from "@/settings/slider";
+import {Tours} from "@/types";
 const PopularTours = () => {
+    const [loadedTour, setLoadedTour] = useState<Tours[]>([])
     const [sliderRef, setSliderRef] = useState<Slider | null>(null);
-
     const {loading, error, data} = useQuery(GET_ROCKETS);
 
-    useEffect(() => {
+    const images = ["/card1.jpg", "/card2.jpg", "/card3.png"];
 
+    useEffect(() => {
+        if(!loading) {
+            setLoadedTour([...data.rockets, ...data.rockets]);
+        }
     }, [data])
 
     if (loading) {
@@ -60,13 +65,14 @@ const PopularTours = () => {
 
 
             <Slider ref={setSliderRef} {...settings} className="mt-[42px] xl:-mx-8 2xl:-mx-32">
-                {data.rockets.map((rocket: { id: string; name: string; description: string }) => (
+                {loadedTour.map((tour: Tours, index: number) => (
                     <TourCard
-                        key={rocket.id}
-                        id={rocket.id}
-                        name={rocket.name}
-                        description={rocket.description}
+                        key={tour.id}
+                        id={tour.id}
+                        name={tour.name}
+                        description={tour.description}
                         type="like"
+                        img={images[index % images.length]}
                     />
                 ))}
             </Slider>

@@ -21,6 +21,7 @@ export interface TourCardProps {
     id: string;
     name: string;
     description: string;
+    img: string;
     type: string;
 }
 
@@ -28,4 +29,5 @@ export interface Tours {
     id: string;
     name: string;
     description: string;
+    img: string;
 }

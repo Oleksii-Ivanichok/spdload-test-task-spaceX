@@ -4,14 +4,14 @@ import {TourCardProps, Tours} from "@/types";
 import {useRecoilState} from "recoil";
 import {tourState} from "@/state/atoms/TourState";
 
-const TourCard = ({id, name, description, type}: TourCardProps) => {
+const TourCard = ({id, name, description, img, type}: TourCardProps) => {
     const [tours, setTours] = useRecoilState<Array<Tours>>(tourState);
 
     const addTour = () => {
         const tourExists = tours.some((tour) => tour.id === id);
 
         if (!tourExists) {
-            setTours((prevTours) => [...prevTours, {id, name, description}]);
+            setTours((prevTours) => [...prevTours, {id, name, description, img}]);
         }
     }
 
@@ -22,8 +22,10 @@ const TourCard = ({id, name, description, type}: TourCardProps) => {
     }
 
     return (
-        <div className="w-full xl:max-w-[340px] xl:mx-6 2xl:mx-6 2xl:max-w-[411px] max-h-[2000px] text-center border border-secondary">
-            <Image src="/card1.jpg" alt="card1" width={411} height={296}/>
+        <div className="w-full xl:max-w-[340px] xl:mx-6 2xl:mx-6 2xl:max-w-[411px] h-[850px] text-center border border-secondary">
+            <div className="w-full relative h-[240px]">
+                <Image src={img} alt="card" fill/>
+            </div>
             <div className="mx-auto max-w-[347px] px-8">
                 <div className="h-[440px]">
                     <h3 className="text-dark-secondary text-2xl font-bold mt-8">{name}</h3>
