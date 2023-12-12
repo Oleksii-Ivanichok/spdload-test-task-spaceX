@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import TourCard from "@/components/TourCard";
-import {useQuery, gql, ApolloProvider} from '@apollo/client';
+import {useQuery} from '@apollo/client';
 
 import {GET_ROCKETS} from "@/apollo/fetchData";
 
@@ -21,13 +21,9 @@ const PopularTours = () => {
 
     useEffect(() => {
         if(!loading) {
-            setLoadedTour([...data.rockets, ...data.rockets]);
+            setLoadedTour([...data.rockets]);
         }
     }, [data])
-
-    if (loading) {
-        return <p>Loading...</p>;
-    }
 
 
     if (error) {
@@ -63,19 +59,23 @@ const PopularTours = () => {
                 </div>
             </div>
 
+            {loading ? (<p>Loading...</p>) : (
+                <Slider ref={setSliderRef} {...settings} className="mt-[42px] xl:-mx-8 2xl:-mx-32">
+                    {loadedTour.map((tour: Tours, index: number) => (
+                        <TourCard
+                            key={tour.id}
+                            id={tour.id}
+                            name={tour.name}
+                            description={tour.description}
+                            type="like"
+                            img={images[index % images.length]}
+                        />
+                    ))}
+                </Slider>
+            )
 
-            <Slider ref={setSliderRef} {...settings} className="mt-[42px] xl:-mx-8 2xl:-mx-32">
-                {loadedTour.map((tour: Tours, index: number) => (
-                    <TourCard
-                        key={tour.id}
-                        id={tour.id}
-                        name={tour.name}
-                        description={tour.description}
-                        type="like"
-                        img={images[index % images.length]}
-                    />
-                ))}
-            </Slider>
+            }
+
 
             <div className="flex justify-between max-w-[88px] mx-auto mt-10 mb-24">
                 <Image src="full-dot-dark.svg" alt="dot" width={24} height={24} className="stroke-dark-secondary"/>

@@ -23,21 +23,21 @@ const Header = () => {
                                 HOME
                             </li>
                         </Link>
-                        <Link href="/#">
+                        {/*<Link href="/#">*/}
                             <li className="hover-link">TOURS</li>
-                        </Link>
-                        <Link href="/#">
+                        {/*</Link>*/}
+                        {/*<Link href="/#">*/}
                             <li className="hover-link">ABOUT</li>
-                        </Link>
-                        <Link href="/#">
+                        {/*</Link>*/}
+                        {/*<Link href="/#">*/}
                             <li className="hover-link">HELP</li>
-                        </Link>
+                        {/*</Link>*/}
                     </ul>
                 </nav>
 
                 <div className="flex gap-3">
                     <Link href="/favorites">
-                        <div className={`w-[52px] h-[52px] flex items-center justify-center ${isFavoritesPage ? 'bg-pink-secondary' : 'bg-white'}`}>
+                        <div className={`w-[52px] h-[52px] flex items-center justify-center ${isFavoritesPage ? 'bg-pink-secondary' : 'bg-white-secondary'}`}>
                             <Image
                                 src={`${isFavoritesPage ? 'heart-white.svg' : 'heart-dark.svg'}`}
                                 alt="favorites"

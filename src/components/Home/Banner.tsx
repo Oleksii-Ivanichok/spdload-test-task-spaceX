@@ -15,9 +15,14 @@ const Banner = () => {
             <div className="h-full w-full bg-header-bg relative z-0">
             </div>
             <div className="centred z-10">
-                <h1 className="text-5xl font-extrabold">
+                <h1 className="text-5xl font-extrabold relative">
                     THE SPACE IS WAITING FOR <br/>
                     <span className="text-[310px] font-extrabold">YOU</span>
+                    <div className="flex justify-between w-[88px] mx-auto centred-dots">
+                        <Image src="full-dot.svg" alt="dot" width={24} height={24} className="stroke-dark-secondary"/>
+                        <Image src="empty-dot.svg" alt="dot" width={24} height={24} className="stroke-dark-secondary"/>
+                        <Image src="empty-dot.svg" alt="dot" width={24} height={24} className="fill-dark-secondary"/>
+                    </div>
                 </h1>
                 <div  ref={ref} className="flex justify-center items-center mt-[58px] gap-2">
                     <CustomButton
@@ -36,6 +41,7 @@ const Banner = () => {
                     />
                 </div>
             </div>
+
 
         </section>
     )

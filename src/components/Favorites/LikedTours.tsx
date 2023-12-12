@@ -6,6 +6,7 @@ import {tourState} from "@/state/atoms/TourState";
 import {useState} from "react";
 import Slider from "react-slick";
 import settings from "@/settings/slider";
+import EmptyCard from "@/components/Favorites/EmptyCard";
 
 const LikedTours = () => {
     const [tours, setTours] = useRecoilState<Array<Tours>>(tourState);
@@ -17,14 +18,17 @@ const LikedTours = () => {
 
     return (
         <section className="mx-auto max-w-[1280px] px-20 mt-16">
-            <div className="text-right">
-            <CustomButton
-                title="Clear all"
-                handleClick={clearTours}
-                containerStyles="text-2xl font-light text-blue-secondary"/>
-            </div>
+            {tours.length > 0 && (
+                <div className="text-right">
+                    <CustomButton
+                        title="Clear all"
+                        handleClick={clearTours}
+                        containerStyles="text-2xl font-light text-blue-secondary"/>
+                </div>
+            )}
+
             <Slider ref={setSliderRef} {...settings} className="mt-[42px] xl:-mx-8 2xl:-mx-32">
-                {tours.map((rocket: { id: string; name: string; description: string; img:string }) => (
+                {tours.map((rocket: { id: string; name: string; description: string; img: string }) => (
                     <TourCard
                         key={rocket.id}
                         id={rocket.id}
@@ -34,6 +38,9 @@ const LikedTours = () => {
                         type="delete"
                     />
                 ))}
+                <EmptyCard/>
+                <EmptyCard/>
+                <EmptyCard/>
             </Slider>
             <div className="mt-[104px]">
 
